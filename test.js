@@ -44,6 +44,36 @@ describe('six bits to base64', () => {
 	});
 });
 
+describe('create bit array from hex string', () => {
+	describe('0', () => {
+		it('[0, 0, 0, 0]', () => {
+			const result = gem.createBitArrayFromHexString('0');
+			assert.deepEqual([0, 0, 0, 0], result);
+		});
+	});
+
+	describe('a', () => {
+		it('[1, 0, 1, 0]', () => {
+			const result = gem.createBitArrayFromHexString('a');
+			assert.deepEqual([1, 0, 1, 0], result);
+		});
+	});
+
+	describe('00', () => {
+		it('[0, 0, 0, 0, 0, 0, 0, 0]', () => {
+			const result = gem.createBitArrayFromHexString('00');
+			assert.deepEqual([0, 0, 0, 0, 0, 0, 0, 0], result);
+		});
+	});
+
+	describe('eac3eea7890caff510c3029a72a4ccbf050fe846', () => {
+		it('[' + '1110101011000011111011101010011110001001000011001010111111110101000100001100001100000010100110100111001010100100110011001011111100000101000011111110100001000110'.split('').toString() + ']', () => {
+			const result = gem.createBitArrayFromHexString('eac3eea7890caff510c3029a72a4ccbf050fe846');
+			assert.deepEqual('1110101011000011111011101010011110001001000011001010111111110101000100001100001100000010100110100111001010100100110011001011111100000101000011111110100001000110'.split(''), result);
+		});
+	});
+});
+
 describe('hex to base64', () => {
 	describe('empty string', () => {
 		it('should return empty string', () => {
