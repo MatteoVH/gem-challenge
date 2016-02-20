@@ -27,3 +27,19 @@ describe('create full binary tree', () => {
 		});
 	});
 });
+
+describe('six bits to base64', () => {
+	describe('[ [0], [0], [0], [0], [0], [0] ]', () => {
+		it('A', () => {
+			const result = gem.sixBitsToBase64([ [0], [0], [0], [0], [0], [0] ]);
+			assert.equal('A', result);
+		});
+	});
+
+	describe('[ [1], [0], [1], [0], [1], [0] ]', () => {
+		it('q', () => {
+			const result = gem.sixBitsToBase64([ [1], [0], [1], [0], [1], [0] ]);
+			assert.equal('q', result);
+		});
+	});
+});
