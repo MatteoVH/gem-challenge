@@ -16,3 +16,14 @@ describe('hexToBitArray', () => {
 		});
 	});
 });
+
+describe('create full binary tree', () => {
+	describe('4 levels, hexadecimal values', () => {
+		it('tree of level 4', () => {
+			const result = gem.createFullBinaryTree(4, '0123456789abcdef');
+			assert.deepEqual(
+				JSON.parse('[[[["0","1"],["2","3"]],[["4","5"],["6","7"]]],[[["8","9"],["a","b"]],[["c","d"],["e","f"]]]]'),
+				result);
+		});
+	});
+});
