@@ -172,3 +172,25 @@ describe('hex to base64', () => {
 		});
 	});
 });
+
+describe('xor', () => {
+	describe('[], []', () => {
+		it('empty string', () => {
+			const result = gem.xor('', '');
+			assert.equal('', result);
+		});
+	});
+
+	describe('["a"], []', () => {
+		it('mismatching array lengths', () => {
+			assert.throws(gem.xor);
+		});
+	});
+
+	describe('["1c0111001f010100061a024b53535009181c"], ["686974207468652062756c6c277320657965"]', () => {
+		it('empty string', () => {
+			const result = gem.xor('', '');
+			assert.equal('', result);
+		});
+	});
+});
