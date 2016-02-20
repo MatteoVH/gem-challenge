@@ -28,18 +28,50 @@ describe('create full binary tree', () => {
 	});
 });
 
-describe('six bits to base64', () => {
-	describe('[ [0], [0], [0], [0], [0], [0] ]', () => {
+describe('traverseBinaryTree', () => {
+	const base64BinaryTree = gem.createFullBinaryTree(6, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/');
+
+	describe('[ [0], [0], [0], [0], [0], [0] ] base 64', () => {
 		it('A', () => {
-			const result = gem.sixBitsToBase64([ [0], [0], [0], [0], [0], [0] ]);
+			const result = gem.traverseBinaryTree(base64BinaryTree, [ [0], [0], [0], [0], [0], [0] ]);
 			assert.equal('A', result);
 		});
 	});
 
-	describe('[ [1], [0], [1], [0], [1], [0] ]', () => {
+	describe('[ [1], [0], [1], [0], [1], [0] ] base 64', () => {
 		it('q', () => {
-			const result = gem.sixBitsToBase64([ [1], [0], [1], [0], [1], [0] ]);
+			const result = gem.traverseBinaryTree(base64BinaryTree, [ [1], [0], [1], [0], [1], [0] ]);
 			assert.equal('q', result);
+		});
+	});
+
+	describe('[ [1], [1], [1], [1], [1], [1] ] base 64', () => {
+		it('/', () => {
+			const result = gem.traverseBinaryTree(base64BinaryTree, [ [1], [1], [1], [1], [1], [1] ]);
+			assert.equal('/', result);
+		});
+	});
+
+	const hexBinaryTree = gem.createFullBinaryTree(4, '0123456789abcdef');
+	
+	describe('[ [0], [0], [0], [0] ] hex', () => {
+		it('0', () => {
+			const result = gem.traverseBinaryTree(hexBinaryTree, [ [0], [0], [0], [0] ]);
+			assert.equal('0', result);
+		});
+	});
+
+	describe('[ [1], [0], [1], [0] ] hex', () => {
+		it('a', () => {
+			const result = gem.traverseBinaryTree(hexBinaryTree, [ [1], [0], [1], [0] ]);
+			assert.equal('a', result);
+		});
+	});
+
+	describe('[ [1], [1], [1], [1] ] hex', () => {
+		it('f', () => {
+			const result = gem.traverseBinaryTree(hexBinaryTree, [ [1], [1], [1], [1] ]);
+			assert.equal('f', result);
 		});
 	});
 });
