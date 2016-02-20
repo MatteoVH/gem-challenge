@@ -107,6 +107,18 @@ const gem = {
 		return result;
 	},
 
+	createHexStringFromBitArray: function(bitArray) {
+		let result = '';
+		const hexBinaryTree = this.createFullBinaryTree(4, '0123456789abcdef');
+
+		for (let bitArrayIndex = 0; bitArrayIndex < bitArray.length; bitArrayIndex += 4) {
+			const fourBits = bitArray.slice(bitArrayIndex, bitArrayIndex + 4);
+			result += this.traverseBinaryTree(hexBinaryTree, fourBits);
+		}
+
+		return result;
+	},
+
 	hexToBase64: function(hexString) {
 		//if string is odd length
 		if (hexString.length % 2) {
@@ -116,6 +128,9 @@ const gem = {
 		//I avoided using the Buffer class in Node.js and the ES6 TypedArray
 		//class because of their built in conversion methods
 		const bitArray = this.createBitArrayFromHexString(hexString);
+
+		return this.createBase64StringFromBitArray(bitArray);
+	},
 
 
 
