@@ -132,8 +132,22 @@ const gem = {
 		return this.createBase64StringFromBitArray(bitArray);
 	},
 
+	xor: function(hexString1, hexString2) {
+		let result = '';
 
+		if (hexString1.length !== hexString2.length)
+			throw new Error('hex string lengths do not match');
 
+		const bitStream1 = this.createBitArrayFromHexString(hexString1);
+		const bitStream2 = this.createBitArrayFromHexString(hexString2);
+
+		const resultBitStream = [];
+
+		for (let bitStreamIndex = 0; bitStreamIndex < bitStream1.length; bitStreamIndex++) {
+			resultBitStream.push(bitStream1[bitStreamIndex] ^ bitStream2[bitStreamIndex]);
+		}
+
+		return this.createHexStringFromBitArray(resultBitStream);
 	}
 }
 
