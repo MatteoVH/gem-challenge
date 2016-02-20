@@ -1,11 +1,16 @@
 # gem-challenge
+on first download run:
 
-to run test cases:
-	ensure mocha is installed
-		npm install mocha -g 
-	run
-		npm test
+$ npm install
+
+to test code run:
+
+$ npm test
 	
-	you can access the function
-		hexToBase64 by requiring module.js
-		it is one of the functions on the object
+you can access the functions
+
+	hexToBase64
+	xor
+	
+by requiring module.js they are both methods
+on the object returned by the require statement
