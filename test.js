@@ -106,6 +106,15 @@ describe('create bit array from hex string', () => {
 	});
 });
 
+describe('create hex string from bit array', () => {
+	describe('[]', () => {
+		it('empty string', () => {
+			const result = gem.createHexStringFromBitArray([]);
+			assert.equal('', result);
+		});
+	});
+});
+
 describe('hex to base64', () => {
 	describe('empty string', () => {
 		it('should return empty string', () => {
