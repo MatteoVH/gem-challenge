@@ -43,3 +43,41 @@ describe('six bits to base64', () => {
 		});
 	});
 });
+
+describe('hex to base64', () => {
+	describe('empty string', () => {
+		it('should return empty string', () => {
+			const result = gem.hexToBase64('');
+			assert.equal('', result);
+		});
+	});
+
+	describe('odd number of hex characters', () => {
+		it('should throw', () => {
+			assert.throws(
+				gem.hexToBase64
+			);
+		});
+	});
+
+	describe('000000', () => {
+		it('should return AAAA', () => {
+			const result = gem.hexToBase64('000000');
+			assert.equal('AAAA', result);
+		});
+	});
+
+	describe('00', () => {
+		it('should return AA', () => {
+			const result = gem.hexToBase64('00');
+			assert.equal('AA', result);
+		});
+	});
+
+	describe('49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d', () => {
+		it('should return SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t', () => {
+			const result = gem.hexToBase64('49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d');
+			assert.equal('SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t', result);
+		});
+	});
+});
