@@ -117,6 +117,22 @@ describe('create hex string from bit array', () => {
 			assert.equal('', result);
 		});
 	});
+
+	describe('[0]', () => {
+		it('[0, 0, 0, 0]', () => {
+			const result = gem.createHexStringFromBitArray([0, 0, 0, 0]);
+			assert.deepEqual('0', result);
+		});
+	});
+
+	const longBitStream = '00001001100010101011000010101011000010011011110111101001'.split('');
+
+	describe('[' + longBitStream.toString() + ']', () => {
+		it('098ab0ab09bde9', () => {
+			const result = gem.createHexStringFromBitArray(longBitStream);
+			assert.deepEqual('098ab0ab09bde9', result);
+		});
+	});
 });
 
 describe('hex to base64', () => {
