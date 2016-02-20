@@ -66,6 +66,21 @@ const gem = {
 		}
 
 		return fillTree(binaryTreeRoot, 1);
+	},
+
+	sixBitsToBase64: function(bits) {
+		const base64BinaryTree = this.createFullBinaryTree(6, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/');
+
+		return traverseBinaryTree(base64BinaryTree, bits);
+
+		function traverseBinaryTree(node, path) {
+			if (path.length === 0)
+				return node;
+
+			const nodeToGo = path.shift();
+
+			return traverseBinaryTree(node[nodeToGo], path);
+		}
 	}
 }
 
