@@ -132,7 +132,7 @@ const gem = {
 		return this.createBase64StringFromBitArray(bitArray);
 	},
 
-	xor: function(hexString1, hexString2) {
+	fixedXor: function(hexString1, hexString2) {
 		let result = '';
 
 		if (hexString1.length !== hexString2.length)
