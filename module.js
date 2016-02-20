@@ -83,6 +83,18 @@ const gem = {
 		}
 	},
 
+	createBitArrayFromHexString: function(hexString) {
+		let bitArray = [];
+		//iterate through the string
+		for (let hexStringIndex = 0; hexStringIndex < hexString.length; hexStringIndex++) {
+			const curChar = hexString[hexStringIndex];
+
+			bitArray.push(...this.hexToBitArray(curChar));
+		}
+
+		return bitArray;
+	},
+
 	hexToBase64: function(hexString) {
 		//if string is odd length
 		if (hexString.length % 2) {
@@ -92,14 +104,7 @@ const gem = {
 		//I avoided using the Buffer class in Node.js and the ES6 TypedArray
 		//class because of their built in conversion methods
 		let result = '';
-		let bitArray = [];
-
-		//iterate through the string backwards, starting from the end
-		for (let hexStringIndex = 0; hexStringIndex < hexString.length; hexStringIndex++) {
-			const curChar = hexString[hexStringIndex];
-
-			bitArray.push(...this.hexToBitArray(curChar));
-		}
+		let bitArray = this.createBitArrayFromHexString(hexString);
 
 		//iterate through each 6 bits in our bit array
 		//base64 characters represent 6 bits
