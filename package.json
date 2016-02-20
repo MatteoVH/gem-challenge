@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MatteoVH/gem-challenge/issues"
   },
-  "homepage": "https://github.com/MatteoVH/gem-challenge#readme"
+  "homepage": "https://github.com/MatteoVH/gem-challenge#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
 }
