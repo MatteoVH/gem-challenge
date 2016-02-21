@@ -194,3 +194,20 @@ describe('fixed xor', () => {
 		});
 	});
 });
+
+describe('remove punctuation from word', () => {
+	describe('punctuationless word: hello', () => {
+		it('is already stripped of punctuation', () => {
+			const result = gem.removePunctuationFromWord('hello');
+			assert.equal(result, 'hello');
+		});
+	});
+
+	describe('word with punctuation: hello,"', () => {
+		it('hello', () => {
+			const result = gem.removePunctuationFromWord('hello,"');
+			assert.equal(result, 'hello');
+		});
+	});
+});
+
