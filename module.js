@@ -157,6 +157,17 @@ const gem = {
 		return this.createBase64StringFromBitArray(bitArray);
 	},
 
+	hexToASCII: function(hexString) {
+		//if string is oddLength
+		if (hexString.length % 2)
+			throw new Error('hex string was of odd length');
+		
+		const bitArray = this.createBitArrayFromHexString(hexString);
+
+		return this.createASCIIStringFromBitArray(bitArray);
+	},
+
+
 	fixedXor: function(hexString1, hexString2) {
 		let result = '';
 
