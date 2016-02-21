@@ -140,8 +140,12 @@ const gem = {
 	fixedXor: function(hexString1, hexString2) {
 		let result = '';
 
-		if (hexString1.length !== hexString2.length)
-			throw new Error('hex string lengths do not match');
+		//pad whichever string is shorter with zeroes to equal the lengths
+		while (hexString1.length < hexString2.length)
+			hexString1 += '0';
+
+		while (hexString1.length > hexString2.length)
+			hexString2 += '0';
 
 		const bitStream1 = this.createBitArrayFromHexString(hexString1);
 		const bitStream2 = this.createBitArrayFromHexString(hexString2);
