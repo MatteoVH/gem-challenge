@@ -231,3 +231,58 @@ describe('check english word correctness', () => {
 	});
 });
 
+
+describe('score english', () => {
+	describe('random hex string (aka not english at all)', () => {
+		it('score < 20', () => {
+			const hexGibberish = '49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d';
+			const result = gem.scoreEnglish(hexGibberish);
+			assert(result < 20);
+		});
+	});
+	
+	describe('random hex strings mixed with english words', () => {
+		it('20 < score < 80', () => {
+			const halfGibberish = `49276d206b these 96e672 are 61696e20 the 6973 
+				real 3206d7573 words 290f9sw-fabs;dfasdf mixed as89@#%98sdfsldfh890 in`;
+			const result = gem.scoreEnglish(halfGibberish);
+			assert(result > 20);
+			assert(result < 80);
+		});
+	});
+
+	describe('workers of the world unite', () => {
+		it('score > 80', () => {
+			const result = gem.scoreEnglish('Workers of the world unite!');
+			assert(result > 60);
+		});
+	});
+
+	describe('bushism: fool me once', () => {
+		it('score > 60 (we can\'t expect too much from bush)', () => {
+			const georgeBushEnglishPhrase = `There's an old saying in Tennessee. I know it's 
+				in Texas, probably in Tennessee, that says, fool me once, shame on, shame 
+				on you. Fool me... you can't get fooled again.`;
+			const result = gem.scoreEnglish(georgeBushEnglishPhrase);
+			assert(result > 60);
+		});
+	});
+
+	describe('kafka passage', () => {
+		it('score > 80', () => {
+			const kafkaSample = `Before he dies, all his experiences in these 
+				long years gather themselves in his head to one point, a question 
+				he has not yet asked the doorkeeper. He waves him nearer, since he can 
+				no longer raise his stiffening body. The doorkeeper has to bend low towards 
+				him, for the difference in height between them has altered much to the man's 
+				disadvantage. "What do you want to know now?" asks the doorkeeper; "you are 
+				insatiable." "Everyone strives to reach the Law," says the man, "so how does 
+				it happen that for all these many years no one but myself has ever begged for 
+				admittance?" The doorkeeper recognizes that the man has reached his end, and to 
+				let his failing senses catch the words roars in his ear: "No one else could ever 
+				be admitted here, since this gate was made only for you. I am now going to shut it.`;
+			const result = gem.scoreEnglish(kafkaSample);
+			assert(result > 80);
+		});
+	});
+});
