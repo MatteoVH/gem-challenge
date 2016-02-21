@@ -200,6 +200,11 @@ const gem = {
 		if (word === '')
 			return false;
 
+		//if the word has non numeric characters, it is not a word
+		//for some reason our dictionary allows such words
+		if (word.match(/[^a-zA-Z]/g))
+			return false;
+
 		return dict.isCorrectSync(word);
 	},
 
