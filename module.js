@@ -148,6 +148,10 @@ const gem = {
 		}
 
 		return this.createHexStringFromBitArray(resultBitStream);
+	},
+
+	removePunctuationFromWord: function(word) {
+		return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'"]/g, "");
 	}
 }
 
