@@ -353,3 +353,30 @@ describe('score english', () => {
 		});
 	});
 });
+
+describe('increment bit array', () => {
+	describe('[0, 0, 0, 0]', () => {
+		it('should become [0, 0, 0, 1]', () => {
+			const bitArray = [0, 0, 0, 0];
+			gem.incrementBitArray(bitArray);
+			assert.deepEqual([0, 0, 0, 1], bitArray);
+		});
+	});
+
+	describe('[0, 1, 1, 1]', () => {
+		it('should become [1, 0, 0, 0]', () => {
+			const bitArray = [0, 1, 1, 1];
+			gem.incrementBitArray(bitArray);
+			assert.deepEqual([1, 0, 0, 0], bitArray);
+		});
+	});
+
+	describe('[1, 1, 1, 1]', () => {
+		it('should loop to [0, 0, 0, 0]', () => {
+			const bitArray = [1, 1, 1, 1];
+			gem.incrementBitArray(bitArray);
+			assert.deepEqual([0, 0, 0, 0], bitArray);
+		});
+	});
+});
+
