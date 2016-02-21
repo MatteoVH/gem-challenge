@@ -213,6 +213,9 @@ const gem = {
 		const wordList = input.split(' ');
 		const wordCount = wordList.length;
 
+		if (wordCount === 1)
+			return 0;
+
 		//remove punctuation from each split word
 		//this will have negligible effect on hex gibberish, but will increase
 		//the score of actual english passages immensely
