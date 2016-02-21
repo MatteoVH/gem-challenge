@@ -231,7 +231,9 @@ const gem = {
 				return countSoFar;
 		}, 0);
 
-		return correctWordCount / wordCount * 100;
+		const portionCorrectWords = correctWordCount / wordCount;
+
+		return portionCorrectWords * 100;
 	}
 }
 
