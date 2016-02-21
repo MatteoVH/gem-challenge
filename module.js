@@ -159,6 +159,8 @@ const gem = {
 		return this.createHexStringFromBitArray(resultBitStream);
 	},
 
+	//remove all normal english punctuation, while leaving that
+	//which would punish strings with non-standard ascii characters
 	removePunctuationFromWord: function(word) {
 		return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'"]/g, "");
 	},
