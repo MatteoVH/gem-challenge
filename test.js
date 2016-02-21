@@ -290,6 +290,12 @@ describe('check english word correctness', () => {
 			assert(gem.wordIsCorrect('sublimation'));
 		});
 	});
+
+	describe('-\'6', () => {
+		it('is not a word', () => {
+			assert(!gem.wordIsCorrect("-'6"));
+		});
+	});
 });
 
 
