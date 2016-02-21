@@ -248,6 +248,45 @@ const gem = {
 			return;
 
 		bitArray[index] = 1;
+	},
+
+	decryptSingleByteXORCypher: function(hexEncodedString) {
+		const possibleOutputs = [];
+
+		const bitArray = [0, 0, 0, 0, 0, 0, 0, 0];
+
+		//iterate through all 256 ascii characters
+		for (let i = 0; i < 256; i++) {
+			//each cypher is composed of a single byte character
+			let cypher = this.createHexStringFromBitArray(bitArray);
+
+			//extend cypher to the length of the hex string
+			if (cypher.length < hexEncodedString.length)
+				cypher = cypher.repeat(hexEncodedString.length / 2);
+			
+			//run the cypher
+			const decodedHexString = this.fixedXor(hexEncodedString, cypher);
+
+			//push the ascii representation of the output
+			possibleOutputs.push(this.hexToASCII(decodedHexString));
+			
+			this.incrementBitArray(bitArray);
+		}
+
+		//iterate through all possibleOutputs and grade them
+		//keep the highest score and return it
+		let currentEnglishStandard = 0;
+		let bestPossibleOutput = null;
+		for (let i = 0; i < possibleOutputs.length; i++) {
+			let possibleOutput = possibleOutputs[i];
+			const englishScore = this.scoreEnglish(possibleOutput);
+			if (englishScore > currentEnglishStandard) {
+				currentEnglishStandard = englishScore;
+				bestPossibleOutput = possibleOutputs[i];
+			}
+		}
+				
+		return bestPossibleOutput;
 	}
 }
 
