@@ -165,6 +165,29 @@ const gem = {
 			return false;
 
 		return dict.isCorrectSync(word);
+	},
+
+	//returns a value between 0 and 100 according to how english-like a passage is
+	scoreEnglish: function(input, dictionary) {
+		const wordList = input.split(' ');
+		const wordCount = wordList.length;
+
+		//remove punctuation from each split word
+		//this will have negligible effect on hex gibberish, but will increase
+		//the score of actual english passages immensely
+		const punctuationlessWordList = wordList.map((word) => {
+			return this.removePunctuationFromWord(word);
+		});
+
+		const correctWordCount = punctuationlessWordList.reduce((countSoFar, word) => {
+
+			if (this.wordIsCorrect(word))
+				return countSoFar + 1;
+			else
+				return countSoFar;
+		}, 0);
+
+		return correctWordCount / wordCount * 100;
 	}
 }
 
