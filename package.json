@@ -18,5 +18,8 @@
   "homepage": "https://github.com/MatteoVH/gem-challenge#readme",
   "devDependencies": {
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "nodehun": "^2.0.8"
   }
 }
