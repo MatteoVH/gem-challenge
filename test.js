@@ -211,3 +211,23 @@ describe('remove punctuation from word', () => {
 	});
 });
 
+describe('check english word correctness', () => {
+	describe('empty string', () => {
+		it('isn\'t a word because it\'s the empty string', () => {
+			assert(!gem.wordIsCorrect(''));
+		});
+	});
+
+	describe('a908shv80dh089ww3lllksjvn', () => {
+		it('isn\'t a word', () => {
+			assert(!gem.wordIsCorrect('a908shv80dh089ww3lllksjvn'));
+		});
+	});
+
+	describe('sublimation', () => {
+		it('is a word', () => {
+			assert(gem.wordIsCorrect('sublimation'));
+		});
+	});
+});
+
