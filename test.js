@@ -30,7 +30,20 @@ describe('create full binary tree', () => {
 	});
 });
 
-describe('traverseBinaryTree', () => {
+describe('traverse binary tree', () => {
+	const ASCIICharacters = [];
+	for (let i = 0; i < 256; i++)
+		ASCIICharacters.push(String.fromCharCode(i));
+
+	const ASCIIBinaryTree = gem.createFullBinaryTree(8, ASCIICharacters);
+
+	describe('[ [0], [1], [0], [0], [0], [0], [0], [1] ] ASCII (65)', () => {
+		it('A', () => {
+			const result = gem.traverseBinaryTree(ASCIIBinaryTree, [ [0], [1], [0], [0], [0], [0], [0], [1] ]);
+			assert.equal('A', result);
+		});
+	});
+
 	const base64BinaryTree = gem.createFullBinaryTree(6, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/');
 
 	describe('[ [0], [0], [0], [0], [0], [0] ] base 64', () => {
