@@ -123,6 +123,21 @@ describe('create bit array from hex string', () => {
 	});
 });
 
+describe('create base 64 string from bit array', () => {
+	describe('[1, 0, 0, 0, 0, 0]', () => {
+		it('g', () => {
+			const result = gem.createBase64StringFromBitArray([1, 0, 0, 0, 0, 0]);
+			assert.equal(result, 'g');
+		});
+	});
+	describe('[1, 0, 0, 0, 0, 0]', () => {
+		it('gx', () => {
+			const result = gem.createBase64StringFromBitArray([1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1]);
+			assert.equal(result, 'gx');
+		});
+	});
+});
+
 describe('create hex string from bit array', () => {
 	describe('[]', () => {
 		it('empty string', () => {
