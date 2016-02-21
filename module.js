@@ -209,7 +209,7 @@ const gem = {
 	},
 
 	//returns a value between 0 and 100 according to how english-like a passage is
-	scoreEnglish: function(input, dictionary) {
+	scoreEnglish: function(input) {
 		const wordList = input.split(' ');
 		const wordCount = wordList.length;
 
