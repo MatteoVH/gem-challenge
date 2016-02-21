@@ -380,3 +380,19 @@ describe('increment bit array', () => {
 	});
 });
 
+describe('decrypt single-byte XOR cypher', () => {
+
+	describe('1504121541121513080f06', () => {
+		it('test string', () => {
+			const result = gem.decryptSingleByteXORCypher('1504121541121513080f06');
+			assert.equal(result, 'test string');
+		});
+	});
+
+	describe('1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736', () => {
+		it('Cooking MC\'s like a pound of bacon', () => {
+			const result = gem.decryptSingleByteXORCypher('1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736');
+			assert.equal(result, 'Cooking MC\'s like a pound of bacon');
+		});
+	});
+});
