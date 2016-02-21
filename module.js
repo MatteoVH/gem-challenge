@@ -113,6 +113,26 @@ const gem = {
 		return result;
 	},
 
+	createASCIIStringFromBitArray: function(bitArray) {
+		let result = '';
+		
+		const ASCIICharacters = [];
+		for (let i = 0; i < 256; i++)
+			ASCIICharacters.push(String.fromCharCode(i));
+
+		const ASCIIBinaryTree = this.createFullBinaryTree(8, ASCIICharacters)
+
+		//iterate through each 8 bits in our bit array
+		//ASCII characters represent 8 bits
+		for (let bitArrayIndex = 0; bitArrayIndex < bitArray.length; bitArrayIndex += 8) {
+			let eightBits = bitArray.slice(bitArrayIndex, bitArrayIndex + 8);
+
+			result += (this.traverseBinaryTree(ASCIIBinaryTree, eightBits));
+		}
+
+		return result;
+	},
+
 	createHexStringFromBitArray: function(bitArray) {
 		let result = '';
 		const hexBinaryTree = this.createFullBinaryTree(4, '0123456789abcdef');
