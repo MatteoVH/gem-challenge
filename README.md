@@ -14,6 +14,7 @@ you can access the functions
 	decryptSingleByteXORCypher
 	
 by requiring module.js 
+
 they are both methods on the object returned by the require statement
 an example of this pattern is in test.js
 
