@@ -138,6 +138,39 @@ describe('create base 64 string from bit array', () => {
 	});
 });
 
+describe('create ASCII string from bit array', () => {
+	describe('[0, 1, 0, 0, 0, 0, 0, 1]', () => {
+		it('A', () => {
+			const result = gem.createASCIIStringFromBitArray([0, 1, 0, 0, 0, 0, 0, 1]);
+			assert.equal(result, 'A');
+		});
+	});
+
+	const bitStream = '01110100011001010111001101110100001100010011001000110011'.split('');
+	describe('[' + bitStream.toString() + ']', () => {
+		it('test123', () => {
+			const result = gem.createASCIIStringFromBitArray(bitStream);
+			assert.equal(result, 'test123');
+		});
+	});
+
+	const bitStream2 = '010011000110111101101110011001110110010101110010001000000' + 
+		'11101000110010101110011011101000010000001110111011010010111010' +
+		'00110100000100000011100110111000001100001011000110110010101110011001000000110000' +
+		'10110111001100100001000000111000001110101011011100110001101110100011101010110000' +
+		'1011101000110100101101111011011100010000001100001011011100110010000100000011000' +
+		'1101100001011100000110100101110100011000010110110001101001011110100110000101110' +
+		'10001101001011011110110111000101110';
+	const bitArray = bitStream2.split('');
+
+	describe('[' + bitArray.toString() + ']', () => {
+		it('Longer test with spaces and punctuation and capitalization.', () => {
+			const result = gem.createASCIIStringFromBitArray(bitArray);
+			assert.equal(result, 'Longer test with spaces and punctuation and capitalization.');
+		});
+	});
+});
+
 describe('create hex string from bit array', () => {
 	describe('[]', () => {
 		it('empty string', () => {
