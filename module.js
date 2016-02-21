@@ -1,5 +1,11 @@
 'use strict';
 
+var fs = require('fs');
+var nodehun = require('nodehun');
+var affbuf = fs.readFileSync('./node_modules/nodehun/examples/dictionaries/en_US.aff');
+var dictbuf = fs.readFileSync('./node_modules/nodehun/examples/dictionaries/en_US.dic');
+var dict = new nodehun(affbuf,dictbuf);
+
 const gem = {
 	hexToBitArray: function(hexCharacter) {
 		switch (hexCharacter) {
@@ -152,6 +158,13 @@ const gem = {
 
 	removePunctuationFromWord: function(word) {
 		return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'"]/g, "");
+	},
+
+	wordIsCorrect: function(word) {
+		if (word === '')
+			return false;
+
+		return dict.isCorrectSync(word);
 	}
 }
 
