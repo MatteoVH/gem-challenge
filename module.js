@@ -127,9 +127,8 @@ const gem = {
 
 	hexToBase64: function(hexString) {
 		//if string is odd length
-		if (hexString.length % 2) {
+		if (hexString.length % 2)
 			throw new Error('hex string was of odd length');
-		}
 
 		//I avoided using the Buffer class in Node.js and the ES6 TypedArray
 		//class because of their built in conversion methods
