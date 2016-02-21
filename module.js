@@ -234,6 +234,20 @@ const gem = {
 		const portionCorrectWords = correctWordCount / wordCount;
 
 		return portionCorrectWords * 100;
+	},
+
+	incrementBitArray: function(bitArray) {
+		let index = bitArray.length - 1;
+
+		while (bitArray[index] === 1) {
+			bitArray[index] = 0;
+			index--;
+		}
+
+		if(index < 0)
+			return;
+
+		bitArray[index] = 1;
 	}
 }
 
